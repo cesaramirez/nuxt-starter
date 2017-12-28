@@ -5,7 +5,7 @@
                 <v-card-title primary-title>
                     <div class="headline">Log In</div>
                 </v-card-title>
-                <v-form>
+                <v-form @submit.prevent="submit">
                   <v-card-text>
                       <v-layout row>
                           <v-flex xs12>
@@ -32,7 +32,7 @@
                   <v-card-actions>
                     <v-layout>
                       <v-flex d-flex justify-space-between>
-                        <v-btn flat type="submit" :block="$vuetify.breakpoint.xsOnly">Log In</v-btn>
+                        <v-btn flat type="submit" :loading="loading" :block="$vuetify.breakpoint.xsOnly">Log In</v-btn>
                         <v-btn flat color="primary" :block="$vuetify.breakpoint.xsOnly">Forgot Your Password?</v-btn>
                       </v-flex>
                     </v-layout>
@@ -44,14 +44,33 @@
 </template>
 
 <script>
+    import { mapActions } from 'vuex'
     export default {
-      layout: 'Auth',
+      layout: 'auth',
       data () {
         return {
           form: {
             email: '',
             password: ''
-          }
+          },
+          loading: false
+        }
+      },
+      methods: {
+        ...mapActions({
+          login: 'auth/login'
+        }),
+        submit () {
+          this.loading = true
+          this.login({
+            fields: {
+              email: this.form.email,
+              password: this.form.password
+            }
+          }).then(() => {
+            this.loading = false
+            return this.$router.push({ path: '/' })
+          })
         }
       }
     }

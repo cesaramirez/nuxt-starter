@@ -23,6 +23,38 @@ module.exports = {
   ** Customize the progress bar color
   */
   loading: { color: '#3B8070' },
+
+  modules: [
+    '@nuxtjs/auth',
+    '@nuxtjs/axios'
+  ],
+  auth: {
+    user: {
+      endpoint: 'http://salario-sv.app/api/v1/me',
+      propertyName: 'user',
+      resetOnFail: true
+    },
+    login: {
+      endpoint: 'http://salario-sv.app/api/v1/login'
+    },
+    logout: {
+      endpoint: 'http://salario-sv.app/api/v1/logout',
+      method: 'POST'
+    },
+    redirect: {
+      notLoggedIn: '/auth/login',
+      loggedIn: '/'
+    },
+    token: {
+      enabled: true,
+      type: 'Bearer',
+      localStorage: false,
+      name: 'token',
+      cookie: true,
+      cookieName: 'token'
+    }
+  },
+
   /*
   ** Build configuration
   */
@@ -30,19 +62,6 @@ module.exports = {
     vendor: [
       '~/plugins/vuetify.js'
     ],
-    extractCSS: true,
-    /*
-    ** Run ESLint on save
-    */
-    extend (config, ctx) {
-      if (ctx.dev && ctx.isClient) {
-        config.module.rules.push({
-          enforce: 'pre',
-          test: /\.(js|vue)$/,
-          loader: 'eslint-loader',
-          exclude: /(node_modules)/
-        })
-      }
-    }
+    extractCSS: true
   }
 }

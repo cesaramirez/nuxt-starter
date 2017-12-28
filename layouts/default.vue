@@ -8,7 +8,7 @@
       app
     >
       <v-list>
-        <v-list-tile 
+        <v-list-tile
           router
           :to="item.to"
           :key="i"
@@ -26,7 +26,7 @@
     </v-navigation-drawer>
     <v-toolbar fixed app :clipped-left="clipped">
       <v-toolbar-side-icon @click="drawer = !drawer"></v-toolbar-side-icon>
-      <v-btn 
+      <v-btn
         icon
         @click.stop="miniVariant = !miniVariant"
       >
@@ -81,6 +81,7 @@
 
 <script>
   export default {
+    middleware: 'auth',
     data () {
       return {
         clipped: false,

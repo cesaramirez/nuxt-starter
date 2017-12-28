@@ -10,7 +10,7 @@
 
 <script>
 export default {
-
+  middleware: 'no-auth'
 }
 </script>
 
