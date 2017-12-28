@@ -3,7 +3,7 @@
   <navbar></navbar>
   <v-content>
     <v-container fluid>
-      <nuxt/>
+        <nuxt/>
     </v-container>
   </v-content>
   <v-footer app></v-footer>
@@ -17,6 +17,7 @@
     components: {
       Navbar
     },
+    transition: 'fade page',
     data () {
       return {
         clipped: false,

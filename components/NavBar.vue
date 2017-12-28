@@ -9,6 +9,9 @@
     </v-toolbar-title>
     <v-spacer></v-spacer>
     <template v-if="user">
+      <v-btn flat :to="{ name: 'home' }" nuxt>
+        Home
+      </v-btn>
       <v-btn flat>
         {{ user.name }}
       </v-btn>
