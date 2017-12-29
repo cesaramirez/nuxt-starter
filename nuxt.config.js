@@ -1,4 +1,6 @@
 
+const webpack = require('webpack')
+
 module.exports = {
   /*
   ** Headers of the page
@@ -15,7 +17,12 @@ module.exports = {
       { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons' }
     ]
   },
-  plugins: ['~/plugins/vuetify.js'],
+
+  plugins: [
+    '~/plugins/vuetify.js',
+    '~/plugins/vee-validate.js'
+  ],
+
   css: [
     '~/assets/style/app.styl'
   ],
@@ -30,15 +37,17 @@ module.exports = {
   ],
   auth: {
     user: {
-      endpoint: 'http://salario-sv.app/api/v1/me',
-      propertyName: 'user',
-      resetOnFail: true
+      endpoint: 'http://vue.laravel.starter.app/api/v1/auth/me',
+      propertyName: '',
+      resetOnFail: true,
+      enabled: true,
+      method: 'POST'
     },
     login: {
-      endpoint: 'http://salario-sv.app/api/v1/login'
+      endpoint: 'http://vue.laravel.starter.app/api/v1/auth/login'
     },
     logout: {
-      endpoint: 'http://salario-sv.app/api/v1/logout',
+      endpoint: 'http://vue.laravel.starter.app/api/v1/auth/logout',
       method: 'POST'
     },
     redirect: {
@@ -60,8 +69,14 @@ module.exports = {
   */
   build: {
     vendor: [
-      '~/plugins/vuetify.js'
+      '~/plugins/vuetify.js',
+      '~/plugins/vee-validate.js'
     ],
-    extractCSS: true
+    extractCSS: true,
+    plugins: [
+      new webpack.ProvidePlugin({
+        '_': 'lodash'
+      })
+    ]
   }
 }

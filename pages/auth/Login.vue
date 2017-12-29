@@ -14,6 +14,9 @@
                               name="email"
                               label="Email"
                               prepend-icon="mail"
+                              :error-messages="errors.collect('email')"
+                              v-validate="'required|email'"
+                              data-vv-name="email"
                               ></v-text-field>
                           </v-flex>
                       </v-layout>
@@ -45,6 +48,7 @@
 
 <script>
     import { mapActions } from 'vuex'
+    import _ from 'lodash'
     export default {
       layout: 'auth',
       data () {
@@ -61,15 +65,27 @@
           login: 'auth/login'
         }),
         submit () {
-          this.loading = true
-          this.login({
-            fields: {
-              email: this.form.email,
-              password: this.form.password
+          this.$validator.validateAll().then(result => {
+            if (result) {
+              this.loading = true
+              this.login({
+                fields: {
+                  email: this.form.email,
+                  password: this.form.password
+                }
+              }).then(() => {
+                this.loading = false
+                // this.$store.dispatch('noti', { message: 'You are Log In!', type: 'success' })
+                console.log('here')
+                return this.$router.push({ path: '/' })
+              }).catch((e) => {
+                console.log(e)
+                this.loading = false
+                // _.forEach(e.response.data.errors, (value, key) => {
+                //   this.errors.add(key, value[0])
+                // })
+              })
             }
-          }).then(() => {
-            this.loading = false
-            return this.$router.push({ path: '/' })
           })
         }
       }
