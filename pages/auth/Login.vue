@@ -28,6 +28,9 @@
                               label="Password"
                               type="password"
                               prepend-icon="vpn_key"
+                              :error-messages="errors.collect('password')"
+                              v-validate="'required|min:6'"
+                              data-vv-name="password"
                               ></v-text-field>
                           </v-flex>
                       </v-layout>
@@ -75,15 +78,13 @@
                 }
               }).then(() => {
                 this.loading = false
-                // this.$store.dispatch('noti', { message: 'You are Log In!', type: 'success' })
-                console.log('here')
+                this.$store.dispatch('noti', { message: 'You are Log In!', type: 'success' })
                 return this.$router.push({ path: '/' })
               }).catch((e) => {
-                console.log(e)
                 this.loading = false
-                // _.forEach(e.response.data.errors, (value, key) => {
-                //   this.errors.add(key, value[0])
-                // })
+                _.forEach(e.response.data.errors, (value, key) => {
+                  this.errors.add(key, value[0])
+                })
               })
             }
           })

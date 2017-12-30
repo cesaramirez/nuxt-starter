@@ -10,7 +10,12 @@
 
 <script>
 export default {
-  middleware: 'no-auth'
+  middleware: 'no-auth',
+  transition (to, from) {
+    // Access component properties here
+    console.log(to.matched[0].components.default.options)
+    return 'fade'
+  }
 }
 </script>
 

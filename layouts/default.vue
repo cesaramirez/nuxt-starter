@@ -1,6 +1,7 @@
 <template>
 <v-app>
   <navbar></navbar>
+  <notification></notification>
   <v-content>
     <v-container fluid>
         <nuxt/>
@@ -12,12 +13,14 @@
 
 <script>
   import Navbar from '@/components/NavBar.vue'
+  import Notification from '@/components/Notification.vue'
   export default {
     middleware: 'auth',
     components: {
-      Navbar
+      Navbar,
+      Notification
     },
-    transition: 'fade page',
+    transition: 'fade',
     data () {
       return {
         clipped: false,
