@@ -1,9 +1,15 @@
 <template>
        <v-layout align-center justify-center>
-        <v-flex xs12 sm8 md4>
+        <v-flex xs12 sm8 md6 lg4>
             <v-card>
                 <v-card-title primary-title>
-                    <div class="headline">Log In</div>
+                  <v-flex justify-center hidden-sm-and-down>
+                    <img src="/logo.png" alt="Logo" height="150px" class="text-xs-center" style="display: block; margin: 0 auto;">
+                    <h1 class="headline text-xs-center">Log In</h1>
+                  </v-flex>
+                  <v-flex justify-center hidden-md-and-up>
+                    <h1 class="headline text-xs-center">Log In</h1>
+                  </v-flex>
                 </v-card-title>
                 <v-form @submit.prevent="submit">
                   <v-card-text>
@@ -36,10 +42,12 @@
                       </v-layout>
                   </v-card-text>
                   <v-card-actions>
-                    <v-layout>
-                      <v-flex d-flex justify-space-between>
-                        <v-btn flat type="submit" :loading="loading" :block="$vuetify.breakpoint.xsOnly">Log In</v-btn>
-                        <v-btn flat color="primary" :block="$vuetify.breakpoint.xsOnly">Forgot Your Password?</v-btn>
+                    <v-layout row wrap>
+                      <v-flex xs12 lg6>
+                        <v-btn type="submit" color="primary" block :loading="loading">Log In</v-btn>
+                      </v-flex>
+                      <v-flex xs12 lg6>
+                        <v-btn flat color="primary" block>Forgot Your Password?</v-btn>
                       </v-flex>
                     </v-layout>
                   </v-card-actions>
