@@ -47,7 +47,7 @@
                         <v-btn type="submit" color="primary" block :loading="loading">Log In</v-btn>
                       </v-flex>
                       <v-flex xs12 lg6>
-                        <v-btn flat color="primary" block>Forgot Your Password?</v-btn>
+                        <v-btn flat :to="{ name: 'forgot' }" color="primary" block>Forgot Your Password?</v-btn>
                       </v-flex>
                     </v-layout>
                   </v-card-actions>

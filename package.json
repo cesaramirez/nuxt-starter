@@ -13,6 +13,7 @@
   "dependencies": {
     "@nuxtjs/auth": "^3.2.1",
     "@nuxtjs/axios": "^4.5.0",
+    "@nuxtjs/pwa": "^2.0.5",
     "lodash": "^4.17.4",
     "nuxt": "^1.0.0-rc11",
     "vee-validate": "^2.0.0",

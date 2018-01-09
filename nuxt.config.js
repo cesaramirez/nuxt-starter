@@ -17,7 +17,10 @@ module.exports = {
       { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons' }
     ]
   },
-
+  manifest: {
+    name: 'Nuxt Starter',
+    theme_color: '#3B8070'
+  },
   plugins: [
     '~/plugins/vuetify.js',
     '~/plugins/vee-validate.js'
@@ -33,7 +36,8 @@ module.exports = {
 
   modules: [
     '@nuxtjs/auth',
-    '@nuxtjs/axios'
+    '@nuxtjs/axios',
+    '@nuxtjs/pwa'
   ],
   auth: {
     user: {
