@@ -17,6 +17,7 @@ module.exports = {
       { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons' }
     ]
   },
+  mode: 'spa',
   manifest: {
     name: 'Nuxt Starter',
     theme_color: '#3B8070'
