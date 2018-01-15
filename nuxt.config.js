@@ -17,7 +17,6 @@ module.exports = {
       { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons' }
     ]
   },
-  mode: 'spa',
   manifest: {
     name: 'Nuxt Starter',
     theme_color: '#3B8070'
@@ -44,7 +43,7 @@ module.exports = {
     user: {
       endpoint: 'http://vue.laravel.starter.app/api/v1/auth/me',
       propertyName: '',
-      resetOnFail: true,
+      resetOnFail: false,
       enabled: true,
       method: 'POST'
     },
