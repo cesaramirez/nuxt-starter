@@ -1,6 +1,6 @@
 <template>
 <v-app>
-  <navbar></navbar>
+  <navbar v-if=""></navbar>
   <notification></notification>
   <v-content>
     <v-container fluid>
@@ -15,7 +15,6 @@
   import Navbar from '@/components/NavBar.vue'
   import Notification from '@/components/Notification.vue'
   export default {
-    middleware: 'auth',
     components: {
       Navbar,
       Notification

@@ -36,35 +36,22 @@ module.exports = {
 
   modules: [
     '@nuxtjs/auth',
-    '@nuxtjs/axios',
-    '@nuxtjs/pwa'
+    '@nuxtjs/axios'
   ],
+
+  router: {
+    middleware: ['auth']
+  },
+
   auth: {
-    user: {
-      endpoint: 'http://vue.laravel.starter.app/api/v1/auth/me',
-      propertyName: '',
-      resetOnFail: false,
-      enabled: true,
-      method: 'POST'
-    },
-    login: {
-      endpoint: 'http://vue.laravel.starter.app/api/v1/auth/login'
-    },
-    logout: {
-      endpoint: 'http://vue.laravel.starter.app/api/v1/auth/logout',
-      method: 'POST'
+    endpoints: {
+      login: { url: 'http://vue.laravel.starter.test/api/v1/auth/login', method: 'post', propertyName: 'token' },
+      logout: { url: 'http://vue.laravel.starter.test/api/v1/auth/logout', method: 'post' },
+      user: { url: 'http://vue.laravel.starter.test/api/v1/auth/me', method: 'post', propertyName: false }
     },
     redirect: {
-      notLoggedIn: '/auth/login',
-      loggedIn: '/'
-    },
-    token: {
-      enabled: true,
-      type: 'Bearer',
-      localStorage: false,
-      name: 'token',
-      cookie: true,
-      cookieName: 'token'
+      login: '/auth/login',
+      home: '/home'
     }
   },
 

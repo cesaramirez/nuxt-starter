@@ -12,3 +12,6 @@ dist
 
 # PWA
 sw.*
+
+.vscode
+.DS_Store

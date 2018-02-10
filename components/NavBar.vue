@@ -8,12 +8,12 @@
       </router-link>
     </v-toolbar-title>
     <v-spacer></v-spacer>
-    <template v-if="user">
+    <template v-if="$auth.state.user">
       <v-btn flat :to="{ name: 'home' }" nuxt>
         Home
       </v-btn>
       <v-btn flat>
-        {{ user.name }}
+        {{ $auth.state.user.name }}
       </v-btn>
     </template>
     <v-tooltip bottom>
@@ -28,17 +28,9 @@
 <script>
 import { mapState } from 'vuex'
 export default {
-  computed: mapState({
-    user: state => state.auth.user
-  }),
   methods: {
     logout () {
-      this.$store.dispatch('auth/logout')
-        .then(() => {
-          this.$router.replace({
-            name: 'auth-login'
-          })
-        })
+      this.$auth.logout()
     }
   }
 }

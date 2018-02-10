@@ -10,7 +10,10 @@
 
 <script>
 export default {
-  middleware: 'no-auth',
+  middleware: ['auth'],
+  options: {
+    auth: false
+  },
   transition (to, from) {
     // Access component properties here
     console.log(to.matched[0].components.default.options)
