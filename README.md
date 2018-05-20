@@ -1,4 +1,4 @@
-# Nuxt Starter (Project in Development)
+# Nuxt Starter (WIP)
 
 > Nuxt.js + Vuetify.js project starter
 
